@@ -38,12 +38,14 @@
         "@angular/common": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__common@12.1.1/system/es2015/ivy/angular-common.min.js",
         "@angular/router": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__router@12.1.1/system/es2015/ivy/angular-router.min.js",
         "@angular/platform-browser": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__platform-browser@12.1.1/system/es2015/ivy/angular-platform-browser.min.js",
-        "@angular/material": "https://unpkg.com/browse/@angular/material@12.1.1/"
+        "@angular/material": "https://unpkg.com/browse/@angular/material@12.1.1/",
+        "react": "https://unpkg.com/react@16.7.0/umd/react.production.min.js",
+        "react-dom": "https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"
       }
     }
   </script>
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
   <!-- Add your organization's prod import map URL to this script's src  -->
   <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
@@ -55,7 +57,8 @@
         "@pb/root-config": "//localhost:9000/pb-root-config.js",
         "@pb/angular-single": "//localhost:4200/main.js",
         "@pb/angular-multiples": "//localhost:4201/main.js",
-        "@pb/navbar": "//localhost:4203/main.js"
+        "@pb/navbar": "//localhost:4203/main.js",
+        "@pb/react-single": "//localhost:4204/pb-react-single.js"
       }
     }
   </script>
@@ -87,11 +90,14 @@
         <route path="angular-multiples">
           <application name="@pb/angular-multiples"></application>
         </route>
+        <route path="react-single">
+          <application name="@pb/react-single"></application>
+        </route>
       </div>
     </single-spa-router>
   </template>
 </head>
-<body>
+<body style="margin: 0;">
   <script>
     Promise.all([System.import('single-spa'), System.import('single-spa-layout')]).then(([singleSpa, singleSpaLayout]) => {
       const { constructApplications, constructLayoutEngine, constructRoutes } = singleSpaLayout;
